@@ -39,6 +39,13 @@ def load_gs_cameras(source_path, gs_output_path, image_resolution=1,
     else:
         print(f"Found image extension {extension}")
     
+    camera_max_num = 2000
+    # import pdb; pdb.set_trace()
+    if len(camera_transforms) > camera_max_num:
+        resolution_scale = np.sqrt(len(camera_transforms) / camera_max_num)
+    else:
+        resolution_scale = 1
+    
     for cam_idx in range(len(camera_transforms)):
         camera_transform = camera_transforms[cam_idx]
         
@@ -73,7 +80,7 @@ def load_gs_cameras(source_path, gs_output_path, image_resolution=1,
             orig_w, orig_h = image.size
             downscale_factor = 1
             if image_resolution in [1, 2, 4, 8]:
-                downscale_factor = image_resolution
+                downscale_factor = image_resolution * resolution_scale
                 # resolution = round(orig_w/(image_resolution)), round(orig_h/(image_resolution))
             if max(orig_h, orig_w) > max_img_size:
                 additional_downscale_factor = max(orig_h, orig_w) / max_img_size
@@ -86,7 +93,7 @@ def load_gs_cameras(source_path, gs_output_path, image_resolution=1,
         else:
             gt_image = None
             if image_resolution in [1, 2, 4, 8]:
-                downscale_factor = image_resolution
+                downscale_factor = image_resolution * resolution_scale
                 # resolution = round(orig_w/(image_resolution)), round(orig_h/(image_resolution))
             if max(height, width) > max_img_size:
                 additional_downscale_factor = max(height, width) / max_img_size

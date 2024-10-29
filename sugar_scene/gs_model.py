@@ -108,6 +108,7 @@ class GaussianSplattingWrapper:
         
         self._C0 = 0.28209479177387814
         
+        
         cam_list = load_gs_cameras(
             source_path=source_path,
             gs_output_path=output_path,

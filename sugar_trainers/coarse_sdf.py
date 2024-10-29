@@ -247,7 +247,7 @@ def coarse_training_with_sdf_regularization(args):
     
     use_eval_split = args.eval
     
-    ply_path = os.path.join(source_path, "sparse/0/points3D.ply")
+    ply_path = os.path.join(source_path, "sparse_model/points3D.ply")
     
     CONSOLE.print("-----Parsed parameters-----")
     CONSOLE.print("Source path:", source_path)

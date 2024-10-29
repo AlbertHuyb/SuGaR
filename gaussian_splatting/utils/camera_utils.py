@@ -54,6 +54,11 @@ def loadCam(args, id, cam_info, resolution_scale):
 def cameraList_from_camInfos(cam_infos, resolution_scale, args):
     camera_list = []
 
+    camera_max_num = 2000
+    # import pdb; pdb.set_trace()
+    if len(cam_infos) > camera_max_num:
+        resolution_scale = resolution_scale * np.sqrt(len(cam_infos) / camera_max_num)
+    
     for id, c in enumerate(cam_infos):
         camera_list.append(loadCam(args, id, c, resolution_scale))
 

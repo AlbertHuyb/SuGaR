@@ -24,6 +24,11 @@ if __name__ == "__main__":
     parser.add_argument('-c', '--checkpoint_path',
                         type=str, 
                         help='(Required) path to the vanilla 3D Gaussian Splatting Checkpoint to load.')
+    
+    parser.add_argument('--sugar_path',
+                        type=str, 
+                        help='(Required) path to the vanilla 3D Gaussian Splatting Checkpoint to load.')
+    
     parser.add_argument('-i', '--iteration_to_load', 
                         type=int, default=7000, 
                         help='iteration to load.')
@@ -108,7 +113,7 @@ if __name__ == "__main__":
         'checkpoint_path': args.checkpoint_path,
         'scene_path': args.scene_path,
         'iteration_to_load': args.iteration_to_load,
-        'output_dir': None,
+        'output_dir': args.sugar_path,
         'eval': args.eval,
         'estimation_factor': 0.2,
         'normal_factor': 0.2,
@@ -148,7 +153,7 @@ if __name__ == "__main__":
         'scene_path': args.scene_path,
         'checkpoint_path': args.checkpoint_path,
         'mesh_path': coarse_mesh_path,      
-        'output_dir': None,
+        'output_dir': args.sugar_path,
         'iteration_to_load': args.iteration_to_load,
         'normal_consistency_factor': 0.1,    
         'gaussians_per_triangle': args.gaussians_per_triangle,        

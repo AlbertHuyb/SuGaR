@@ -2461,7 +2461,7 @@ def extract_texture_image_and_uv_from_gaussians(
         image_size=(rc.image_height, rc.image_width),
         blur_radius=0.0, 
         faces_per_pixel=faces_per_pixel,
-        # max_faces_per_bin=max_faces_per_bin
+        max_faces_per_bin=max_faces_per_bin
     )
     lights = AmbientLights(device=rc.device)
     rasterizer = MeshRasterizer(
